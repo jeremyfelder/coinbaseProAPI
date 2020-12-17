@@ -1,0 +1,9 @@
+{
+  "name": "coinbaseProAPI",
+  "version": "0.0.1",
+  "description": "Typescript API wrapper for Coinbase Pro",
+  "main": "index.js",
+  "author": "Jeremy Felder",
+  "license": "MIT",
+  "private": false
+}
