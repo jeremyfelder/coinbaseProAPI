@@ -1,7 +1,8 @@
 import { getRequest } from '@src/network';
-import { Currency } from './types';
+import { Currency } from '@src/marketData/currencies/types';
+import { CB_BASE_URL } from '@src/marketData'
 
-async function currency(id: string): Promise<Currency | undefined> {
+async function getCurrency(id: string): Promise<Currency | undefined> {
     const path = `/currencies/${id}`;
     try {
         return await getRequest(CB_BASE_URL, path);
@@ -10,7 +11,7 @@ async function currency(id: string): Promise<Currency | undefined> {
     }
 }
 
-async function currencies(): Promise<Currency[]> {
+async function getAllCurrencies(): Promise<Currency[]> {
     try {
         return await getRequest(CB_BASE_URL, '/currencies');
     } catch (error) {
@@ -18,4 +19,4 @@ async function currencies(): Promise<Currency[]> {
     }
 }
 
-export { currency, currencies }
+export { getCurrency, getAllCurrencies }

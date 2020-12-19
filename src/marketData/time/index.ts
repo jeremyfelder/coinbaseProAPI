@@ -1,5 +1,6 @@
 import { getRequest } from "@src/network";
-import { Time } from "./types";
+import { Time } from "@src/marketData/time/types";
+import { CB_BASE_URL } from '@src/marketData'
 
 async function time(): Promise<Time | undefined> {
     try {

@@ -1,0 +1,7 @@
+{
+    "recursive": true,
+    "color": true,
+    "full-trace": true,
+    "exit": true,
+    "check-leaks": true
+}

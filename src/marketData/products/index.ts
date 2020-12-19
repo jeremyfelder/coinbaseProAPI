@@ -1,5 +1,8 @@
 import { getRequest } from '@src/network';
-import { OrderBook, Product } from './types';
+import { Candle, LastTrade, OrderBook, Product, Ticker, TwentyFourHourStats } from '@src/marketData/products/types';
+import { CB_BASE_URL } from '@src/marketData'
+
+const MAX_NUM_CANDLES = 300;
 
 async function products(): Promise<Product[]> {
     try {
@@ -42,8 +45,11 @@ async function lastTrade(id: string): Promise<LastTrade[] | undefined> {
     }
 }
 
-async function historicRates(id: string, granularity: number, begin: string, end: string): Promise<Candle[] | undefined> {
-    // TODO throw if the begin, end, and granularity will create more than 300 points
+async function historicRates(id: string, granularity: number, begin: number, end: number): Promise<Candle[] | undefined> {
+    const expectedNumCandles = (begin-end)/granularity;
+    if(expectedNumCandles > MAX_NUM_CANDLES) {
+        throw new Error(`Expected number of candles ${expectedNumCandles} is greater than the max allowed: ${MAX_NUM_CANDLES}`);
+    }
     try {
         return await getRequest(CB_BASE_URL, `/products/${id}/candles`, );
     } catch (error) {
