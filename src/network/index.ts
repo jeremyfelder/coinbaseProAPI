@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { stringifyPretty } from 'utils';
+import { stringifyPretty } from '@src/utils';
 import * as querystring from 'querystring';
 
 interface Response {

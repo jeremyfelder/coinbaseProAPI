@@ -3,5 +3,8 @@
     "color": true,
     "full-trace": true,
     "exit": true,
-    "check-leaks": true
+    "check-leaks": true,
+    "timeout": 5000,
+    "watch": true,
+    "watch-files": ["test", "src"]
 }
