@@ -22,8 +22,9 @@ const defaultHeaders = {
  * @param path - Path to call - should include a preceeding '/'
  * @param params - Query string paramters in dictionary (object) form
  * @param additonalHeaders - Additional Headers to apply to the request in dictionary (object) form
+ * @param paginationNum { number } - Total number of items to retrieve via pagination headers
  */
-async function getRequest(baseURL: string, path: string, params?: any, additonalHeaders?: any) {
+async function getRequest(baseURL: string, path: string, params?: any, additonalHeaders?: any, paginationNum?: number) {
   const queryStringParams: string = params ? '' : `/?${querystring.stringify(params)}`;
   const urlWithQueryParams = `${baseURL}${path}${queryStringParams}`;
   const headers = { ...defaultHeaders, ...additonalHeaders };
